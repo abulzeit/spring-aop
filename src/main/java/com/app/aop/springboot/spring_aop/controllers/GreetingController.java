@@ -12,13 +12,17 @@ import com.app.aop.springboot.spring_aop.services.GreetingService;
 
 @RestController
 public class GreetingController {
-
+    
     @Autowired
     private GreetingService greetingService;
 
     @GetMapping("/greeting")
-    public ResponseEntity<?>greeting() {
+    public ResponseEntity<?> greeting() {
         return ResponseEntity.ok(Collections.singletonMap("greeting", greetingService.sayHello("Paco", "el gato!")));
     }
-    
+    @GetMapping("/greeting-error")
+    public ResponseEntity<?> greetingError() {
+        return ResponseEntity.ok(Collections.singletonMap("greeting", greetingService.sayHelloError("Paco", "el gato!")));
+    }
+
 }
